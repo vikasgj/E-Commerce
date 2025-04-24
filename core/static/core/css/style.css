@@ -1540,3 +1540,16 @@ a.btn-link.text-light:after {
   background-size: cover;
   transition: transform .3s ease-out;
 }
+
+/* Make brand name bold, big, and stylish */
+.brand-text {
+  font-size: 60px; /* Increase the font size */
+  font-weight: bold; /* Make it bold */
+  color: #2C3E50; /* Stylish dark color */
+  font-family: 'Arial', sans-serif; /* Clean sans-serif font */
+  text-transform: uppercase; /* Capitalize letters */
+  letter-spacing: 5px; /* Add spacing between letters */
+  font-style: italic; /* Add some style with italics */
+}
+
+
