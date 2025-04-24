@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-#lusu7g8w1ifbi6d*zokxs+n&(w5%1^8+m527*%!^x0z5i(!73
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'e-commerce-tuvg.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
