@@ -10,10 +10,18 @@ class Product(models.Model):
         ('sports', 'Sports'),
     ]
 
+    SUBCATEGORY_CHOICES = [
+        ('tshirt', 'T-Shirts'),
+        ('shirt', 'Shirts'),
+        ('denim', 'Denims'),
+        ('pants', 'Pants & Trousers'),
+    ]
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    subcategory = models.CharField(max_length=50, choices=SUBCATEGORY_CHOICES, blank=True, null=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     stock = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

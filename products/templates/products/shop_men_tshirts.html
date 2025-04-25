@@ -1,0 +1,91 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Men's T-Shirts{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row">
+    <!-- Sidebar filters -->
+    <div class="col-md-3">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Refine By</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <strong>Gender</strong>
+              <ul class="list-unstyled ms-3">
+                <li>Men ({{ products|length }})</li>
+              </ul>
+            </li>
+            <li class="mb-3">
+              <strong>Category</strong>
+              <ul class="list-unstyled ms-3">
+                <li>T-Shirts ({{ products|length }})</li>
+              </ul>
+            </li>
+            <li class="mb-2"><details><summary><strong>Price</strong></summary></details></li>
+            <li class="mb-2"><details><summary><strong>Brands</strong></summary></details></li>
+            <li class="mb-2"><details><summary><strong>Occasion</strong></summary></details></li>
+            <li class="mb-2"><details><summary><strong>Discount</strong></summary></details></li>
+            <li class="mb-2"><details><summary><strong>Colors</strong></summary></details></li>
+            <li class="mb-2"><details><summary><strong>Size & Fit</strong></summary></details></li>
+            <li class="mb-2"><details><summary><strong>Tags</strong></summary></details></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="col-md-9">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h4 mb-0">Men's T-Shirts</h2>
+        <div class="text-end">
+          <span class="text-muted">{{ products|length }} Items Found</span>
+          <span class="mx-3 text-secondary">|</span>
+          <label for="sortSelect" class="me-2 text-muted">Sort By:</label>
+          <select class="form-select d-inline-block w-auto" id="sortSelect">
+            <option>Reference</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="card h-100 shadow-sm border-0">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="{{ product.title }}">
+            {% else %}
+            <img src="https://via.placeholder.com/300x300.png?text=No+Image+Available" class="card-img-top" alt="No image">
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+  <h6 class="card-title mb-1">{{ product.title }}</h6>
+
+  {% if product.discounted_price %}
+    <p class="text-muted mb-1">
+      <small><s>₹{{ product.price }}</s></small>
+    </p>
+    <p class="text-danger mb-2 fw-semibold">₹{{ product.discounted_price }}</p>
+  {% else %}
+    <p class="text-danger mb-2 fw-semibold">₹{{ product.price }}</p>
+  {% endif %}
+
+  <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-primary btn-sm mt-auto">View</a>
+</div>
+
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+          <p class="text-center text-muted">No t-shirts found in the Men category.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
