@@ -1,16 +1,22 @@
 from pathlib import Path
 import os
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
 SECRET_KEY = 'django-insecure-#lusu7g8w1ifbi6d*zokxs+n&(w5%1^8+m527*%!^x0z5i(!73'
 
-DEBUG = True
+DEBUG = False  # Set to False for production
 
 ALLOWED_HOSTS = ['e-commerce-gqdh.onrender.com', '127.0.0.1', 'localhost']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://e-commerce-gqdh.onrender.com'
+]
+
+# SECURITY SETTINGS FOR PRODUCTION
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,7 +30,7 @@ INSTALLED_APPS = [
     'accounts',
     'orders',
     'payments',
-    'wishlist',  # Add the new wishlist app
+    'wishlist',  # Newly added app
 ]
 
 MIDDLEWARE = [
@@ -42,7 +48,7 @@ ROOT_URLCONF = 'ecommerce_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Added templates folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -60,10 +66,10 @@ WSGI_APPLICATION = 'ecommerce_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Vikasgj@123',
-        'HOST': 'localhost',
+        'NAME': 'ecommerce_db_nh98',
+        'USER': 'ecommerce_db_nh98_user',
+        'PASSWORD': 'Sew14Wb35qkEWJRid2EjayR1YjDuFZiQ',
+        'HOST': 'dpg-d05m7tidbo4c73f7ptu0-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
@@ -83,7 +89,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -94,6 +99,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
