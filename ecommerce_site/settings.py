@@ -1,5 +1,8 @@
 from pathlib import Path
 import os
+import dj_database_url
+import cloudinary
+import cloudinary_storage
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,6 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
     'core',
     'products',
     'accounts',
@@ -64,15 +70,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ecommerce_site.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_db_mat5',
-        'USER': 'ecommerce_db_mat5_user',
-        'PASSWORD': 'Z6mVBK7606VEbmEMEZEoMPtFW1LMHDro',
-        'HOST': 'dpg-d069jvpr0fns73fd2plg-a.oregon-postgres.render.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dlhbgcido',
+    'API_KEY': '769356182795974',
+    'API_SECRET': 'Lf47PDRgxhqH52fQO_8E6A0CkuE',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
