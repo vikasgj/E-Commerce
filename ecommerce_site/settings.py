@@ -66,10 +66,10 @@ WSGI_APPLICATION = 'ecommerce_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_db_nh98',
-        'USER': 'ecommerce_db_nh98_user',
-        'PASSWORD': 'Sew14Wb35qkEWJRid2EjayR1YjDuFZiQ',
-        'HOST': 'dpg-d05m7tidbo4c73f7ptu0-a.oregon-postgres.render.com',
+        'NAME': 'ecommerce_db_mat5',
+        'USER': 'ecommerce_db_mat5_user',
+        'PASSWORD': 'Z6mVBK7606VEbmEMEZEoMPtFW1LMHDro',
+        'HOST': 'dpg-d069jvpr0fns73fd2plg-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
