@@ -6,9 +6,9 @@ import cloudinary_storage
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-#lusu7g8w1ifbi6d*zokxs+n&(w5%1^8+m527*%!^x0z5i(!73'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False  # Set to False for production
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['e-commerce-gqdh.onrender.com', '127.0.0.1', 'localhost']
 
@@ -74,9 +74,9 @@ DATABASES = {
 }
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dlhbgcido',
-    'API_KEY': '769356182795974',
-    'API_SECRET': 'Lf47PDRgxhqH52fQO_8E6A0CkuE',
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
