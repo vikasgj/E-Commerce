@@ -29,15 +29,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary_storage',
-    'django.contrib.staticfiles',
     'cloudinary',
     'core',
     'products',
     'accounts',
     'orders',
     'payments',
-    'wishlist',  # Newly added app
+    'wishlist',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
